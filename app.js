@@ -5,9 +5,8 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let cors = require('cors');
 
-let indexRouter = require('./routes/index');
-let usersRouter = require('./routes/users');
-const {render} = require("express/lib/application");
+// let indexRouter = require('./routes/index');
+// let usersRouter = require('./routes/users');
 
 let app = express();
 let corsOptions = {

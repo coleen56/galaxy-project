@@ -1,0 +1,20 @@
+// config.js
+const path = require("path");
+const dotenv = require("dotenv");
+
+// chargement dotenv
+dotenv.config({ path: path.resolve(__dirname, ".env") });
+
+module.exports = {
+    HOST: process.env.DB_HOST + ":" + process.env.DB_PORT,
+    USER: process.env.DB_USER,
+    PASSWORD: process.env.DB_PASS,
+    DB: process.env.DB_NAME,
+    dialect: "mysql",
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
+};
