@@ -5,6 +5,8 @@ let cookieParser = require("cookie-parser");
 let logger = require("morgan");
 let cors = require("cors");
 
+const galaxyRoute = require('./routes/galaxy.route');
+
 // let indexRouter = require('./routes/index');
 // let usersRouter = require('./routes/users');
 
@@ -42,6 +44,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello World!" });
 });
 
+app.use('/galaxies', galaxyRoute);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -55,7 +59,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.json({ message: err.message });
 });
 
 module.exports = app;
