@@ -26,11 +26,9 @@ app.use(express.static(path.join(__dirname, "public")));
 // database
 const db = require("./models");
 const Role = db.role;
-//drop and create table
-db.sequelize.sync();
+
 // will drop the table if it already exists
 db.sequelize.sync().then(() => {
-  console.log("Drop and Resync Database with { force: true }");
   initial();
 });
 
