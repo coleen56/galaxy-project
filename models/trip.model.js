@@ -1,8 +1,8 @@
 const Trip =( sequelize, DataTypes) =>
 {
-    sequelize.define("Trip", {
+    return sequelize.define("Trip", {
         id: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
@@ -11,7 +11,7 @@ const Trip =( sequelize, DataTypes) =>
             allowNull: true,
         },
         departure: {
-            type: DataTypes.TIMESTAMP,
+            type: DataTypes.DATE,
             allowNull: false,
         },
         price: {
@@ -19,7 +19,6 @@ const Trip =( sequelize, DataTypes) =>
             allowNull: false,
         }
     }, {tableName: "trip",})
-        return Trip;
 };
 
 module.exports = Trip;

@@ -1,7 +1,7 @@
 const role = (sequelize, DataTypes) => {
     return sequelize.define("roles", {
         id: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,

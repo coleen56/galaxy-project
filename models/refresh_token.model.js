@@ -1,7 +1,7 @@
 const refresh_token = (sequelize, DataTypes) => {
     return sequelize.define("refresh_tokens", {
         id: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -11,7 +11,7 @@ const refresh_token = (sequelize, DataTypes) => {
             allowNull: false,
         },
         expires: {
-            type: DataTypes.TIMESTAMP,
+            type: DataTypes.DATE,
             allowNull: false,
         }
     }, {tableName: "refresh_tokens"});

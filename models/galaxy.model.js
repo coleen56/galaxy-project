@@ -1,7 +1,7 @@
 const Galaxy = (sequelize, DataTypes) => {
-    sequelize.define("Galaxy", {
+    return sequelize.define("Galaxy", {
         id: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
@@ -16,7 +16,6 @@ const Galaxy = (sequelize, DataTypes) => {
     }, {
         tableName: "galaxy",
     });
-    return Galaxy;
 }
 
 module.exports = Galaxy;

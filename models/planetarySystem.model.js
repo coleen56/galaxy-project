@@ -1,7 +1,7 @@
 const PlanetarySystem =(sequelize, DataTypes) => {
-    sequelize.define("PlanetarySystem", {
+    return sequelize.define("PlanetarySystem", {
         id: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
@@ -16,7 +16,6 @@ const PlanetarySystem =(sequelize, DataTypes) => {
     }, {
         tableName: "planetary_system"
     });
-    return PlanetarySystem;
 }
 
 module.exports = PlanetarySystem;
