@@ -1,12 +1,12 @@
 // config.js
-const path = require("path");
+const path = require("node:path");
 const dotenv = require("dotenv");
 
 // chargement dotenv
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 module.exports = {
-    HOST: process.env.DB_HOST + ":" + process.env.DB_PORT,
+    HOST: process.env.DB_HOST,
     USER: process.env.DB_USER,
     PASSWORD: process.env.DB_PASS,
     DB: process.env.DB_NAME,
