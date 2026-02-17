@@ -29,6 +29,7 @@ db.sequelize = sequelize;
 db.user = require("../models/user.model.js")(sequelize, DataTypes);
 db.role = require("../models/role.model.js")(sequelize, DataTypes);
 db.refresh_token = require("../models/refresh_token.model")(sequelize, DataTypes);
+db.trip = require("../models/trip.model.js")(sequelize, DataTypes);
 
 // many to many user <=> roles
 db.user.belongsToMany(db.role, {
@@ -54,6 +55,22 @@ db.user.hasOne(db.refresh_token, {
     foreignKey: "refresh_token_id",
     as: "refresh_token"
 })
+
+// many to many user <=> trip
+db.user.belongsToMany(db.trip, {
+    through: "user_trip",
+    foreignKey: "user_id",
+    otherKey: "trip_id"
+});
+
+db.trip.belongsToMany(db.user, {
+    through: "user_trip",
+    foreignKey: "trip_id",
+    otherKey: "user_id"
+});
+
+// one to many trajet <=> planète de départ
+
 
 // liste des rôles possibles
 db.ROLES = ["user", "admin", "moderator"];
