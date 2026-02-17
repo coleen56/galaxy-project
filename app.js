@@ -6,6 +6,7 @@ let logger = require("morgan");
 let cors = require("cors");
 
 let authRouter = require("./routes/auth.routes");
+let testRouter = require("./routes/user.routes");
 
 let app = express();
 let corsOptions = {
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/auth", authRouter);
+app.use("/api/test", testRouter);
 
 // database
 const db = require("./models");
