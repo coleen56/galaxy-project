@@ -10,6 +10,6 @@ const role = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         }
-    });
+    }, {tableName: "roles"});
 };
 module.exports = role;

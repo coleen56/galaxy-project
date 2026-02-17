@@ -18,6 +18,6 @@ const user = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         }
-    });
+    }, {tableName: "users"});
 };
 module.exports = user;

@@ -14,6 +14,6 @@ const refresh_token = (sequelize, DataTypes) => {
             type: DataTypes.TIMESTAMP,
             allowNull: false,
         }
-    });
+    }, {tableName: "refresh_tokens"});
 };
 module.exports = refresh_token;
