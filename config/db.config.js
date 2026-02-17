@@ -3,7 +3,7 @@ const path = require("node:path");
 const dotenv = require("dotenv");
 
 // chargement dotenv
-dotenv.config({ path: path.resolve(__dirname, ".env") });
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 module.exports = {
     HOST: process.env.DB_HOST,

@@ -34,6 +34,12 @@ db.sequelize.sync().then(() => {
   initial();
 });
 
+function initial() {
+  Role.findOrCreate({ where: { id: 1 }, defaults: { name: "user" } });
+  Role.findOrCreate({ where: { id: 2 }, defaults: { name: "moderator" } });
+  Role.findOrCreate({ where: { id: 3 }, defaults: { name: "admin" } });
+}
+
 app.get("/", (req, res) => {
   res.json({ message: "Hello World!" });
 });
