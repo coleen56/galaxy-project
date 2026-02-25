@@ -1,5 +1,6 @@
 const models = require("../models");
 const trip = models.trip;
+const user = models.user;
 
 exports.create = (req, res) => {
     trip.create(req.body)
@@ -24,6 +25,26 @@ exports.findById = (req, res) => {
     .catch((err) => res.status(500).json({message: "Une erreur est survenu"}));
 };
 
-exports.bookTrip = (req, res) => {
-    trip.addUser()
-}
+exports.bookTrip = async (req, res) => {
+    try {
+        const userId = req.body.userId;
+
+        const tripObject = await trip.findByPk(req.body.tripId);
+        if (!tripObject) {
+            return res.status(404).json({ message: "Le voyage est introuvable" });
+        }
+
+        const userObject = await user.findByPk(userId);
+        if (!userObject) {
+            return res.status(404).json({ message: "L'utilisateur est introuvable" });
+        }
+
+        await tripObject.addUser(userObject);
+
+        return res.status(200).json({ message: "Réservation effectuée avec succès" });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Erreur serveur" });
+    }
+};

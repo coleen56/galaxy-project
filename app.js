@@ -4,6 +4,7 @@ let path = require("node:path");
 let cookieParser = require("cookie-parser");
 let logger = require("morgan");
 let cors = require("cors");
+let authMiddleware = require("./middleware/authJwt");
 
 const galaxyRoute = require('./routes/galaxy.route');
 const planetarySystemRoute = require("./routes/planetaySystem.route");
