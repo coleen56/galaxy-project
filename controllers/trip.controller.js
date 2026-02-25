@@ -39,6 +39,10 @@ exports.bookTrip = async (req, res) => {
             return res.status(404).json({ message: "L'utilisateur est introuvable" });
         }
 
+        if(req.userId != userId) {
+            return res.status(400).json({ message: "Vous ne pouvez pas réserver pour cet utilisateur"});
+        }
+
         await tripObject.addUser(userObject);
 
         return res.status(200).json({ message: "Réservation effectuée avec succès" });
