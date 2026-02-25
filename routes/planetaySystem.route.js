@@ -1,10 +1,11 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/galaxy.controller")
+
+const controller = require("../controllers/planetarySystem.controller");
 
 router.get("/", controller.findAll);
-router.get("/:id", controller.findById);
 router.post("/", controller.create);
+router.get("/:id", controller.findById);
 router.delete("/:id", controller.delete);
 
 module.exports = router;

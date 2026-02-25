@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const db = require("../models");
 const Galaxy = db.galaxy;
 
@@ -18,7 +19,15 @@ exports.findById = (req, res) => {
 };
 
 exports.create = (req, res) => {
-  Galaxy.create(res.body)
+  Galaxy.create(req.body)
     .then((galaxy) => res.status(201).json(galaxy))
-    .catch((err) => res.status(400).json({ message: err.message }));
+    .catch((err) => res.status(400).json({ message: "Un problème est survenu" }));
+};
+
+exports.delete = (req, res) => {
+  Galaxy.destroy({
+    where: {id: req.params.id}
+  })
+  .then(() =>res.status(200).json({message: "La galaxy a bien été supprimée"}))
+  .catch(() => res.status(500).json({message: "Un problème est survenu"}));
 };

@@ -49,13 +49,14 @@ db.role.belongsToMany(db.user, {
 
 // one to one user <=> refresh token
 
-db.refresh_token.hasOne(db.user, {
+db.refresh_token.belongsTo(db.user, {
     foreignKey: "user_id",
     as: "user"
 })
 
+// un user a un refresh_token
 db.user.hasOne(db.refresh_token, {
-    foreignKey: "refresh_token_id",
+    foreignKey: "user_id",
     as: "refresh_token"
 })
 
@@ -72,14 +73,13 @@ db.trip.belongsToMany(db.user, {
     otherKey: "user_id"
 });
 
-// one to many trajet <=> planète de départ
-db.trip.hasOne(db.planet, {
+// Les FK departure_planet_id et arrival_planet_id seront dans trip
+db.trip.belongsTo(db.planet, {
     foreignKey: "departure_planet_id",
     as: 'departure_planet'
 })
 
-// one to many trajet <=> planète d'arrivée'
-db.trip.hasOne(db.planet, {
+db.trip.belongsTo(db.planet, {
     foreignKey: "arrival_planet_id",
     as: 'arrival_planet'
 })

@@ -6,11 +6,11 @@ let logger = require("morgan");
 let cors = require("cors");
 
 const galaxyRoute = require('./routes/galaxy.route');
-
-const galaxyRoute = require('./routes/galaxy.route');
-
+const planetarySystemRoute = require("./routes/planetaySystem.route");
 let authRouter = require("./routes/auth.routes");
 let testRouter = require("./routes/user.routes");
+const planetRouter = require("./routes/planet.routes");
+const tripRouter = require("./routes/trip.route");
 
 let app = express();
 let corsOptions = {
@@ -35,7 +35,7 @@ const Role = db.role;
 
 // will drop the table if it already exists
 db.sequelize.sync({
-  force: true
+  force: false
     }
 ).then(() => {
   console.log("Drop and Resync Database with { force: true }");
@@ -53,6 +53,9 @@ app.get("/", (req, res) => {
 });
 
 app.use('/galaxies', galaxyRoute);
+app.use('/system', planetarySystemRoute);
+app.use("/planet", planetRouter);
+app.use("/trip", tripRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
