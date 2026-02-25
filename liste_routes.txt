@@ -1,0 +1,35 @@
+Routes : 
+
+- AUTHENTIFICATION : 
+	- "/signup" : signup → création d’un nouvel utilisateur, avec vérification que le username/email n’existe pas et que le rôle est valide (verifySignUp)
+	- "/signin" : signin → connexion d’un utilisateur existant et génération du JWT
+
+- Base url : /galaxies (protégé par verification du token JWT)
+	- "/" : findAll → récupération de toutes les galaxies
+	- "/:id" : findById → récupération d’une galaxie par son id
+	- "/" : create → création d’une nouvelle galaxie
+	- "/:id" : delete → suppression d’une galaxie par son id
+	
+- Base url : /planet (protégé par verification du token JWT)
+	- "/" : findAll → récupération de tous les planètes
+	- "/" : create → création d’une nouvelle planète
+	- "/:id" : findById → récupération d’une planète par son id
+	- "/:id" : delete → suppression d’une planète par son id
+	
+- Base url : /system (protégé par verification du token JWT)
+	- "/" : findAll → récupération de tous les systèmes planétaires
+	- "/" : create → création d’un nouveau système planétaire
+	- "/:id" : findById → récupération d’un système planétaire par son id
+	- "/:id" : delete → suppression d’un système planétaire par son id
+	
+- Base url : /trip (protégé par verification du token JWT)
+	- "/" : findAll → récupération de tous les voyages
+	- "/" : create → création d’un nouveau voyage
+	- "/:id" : findById → récupération d’un voyage par son id
+	- "/booking" : bookTrip → réservation d’un voyage par un utilisateur connecté
+	
+- Base url : /user (protégé par verification du token JWT)
+	- "/all" : allAccess → accès public (pas de restriction de rôle, mais protégé par verifyToken)
+	- "/user" : userBoard → accès réservé aux utilisateurs authentifiés (verifyToken)
+	- "/mod" : moderatorBoard → accès réservé aux modérateurs (verifyToken + isModerator)
+	- "/admin" : adminBoard → accès réservé aux administrateurs (verifyToken + isAdmin)
