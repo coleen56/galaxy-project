@@ -3,21 +3,23 @@ const config = require("../config/db.config.js");
 const { Sequelize, DataTypes } = require("sequelize");
 
 // instance de sequelize
-const sequelize = new Sequelize(
-    config.DB,
-    config.USER,
-    config.PASSWORD,
-    {
-        host: config.HOST,
-        dialect: config.dialect,
-        pool: {
-            max: config.pool.max,
-            min: config.pool.min,
-            acquire: config.pool.acquire,
-            idle: config.pool.idle
+const sequelize = new Sequelize(config.url, {
+    dialect: "postgres",
+    protocol: "postgres",
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false,
         },
-    }
-);
+    },
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000,
+    },
+    logging: false,
+});
 
 const db = {};
 
