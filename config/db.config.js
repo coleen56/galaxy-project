@@ -6,11 +6,18 @@ const dotenv = require("dotenv");
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 module.exports = {
-    HOST: process.env.DB_HOST,
-    USER: process.env.DB_USER,
-    PASSWORD: process.env.DB_PASS,
-    DB: process.env.DB_NAME,
-    dialect: "mysql",
+    // HOST: process.env.DB_HOST,
+    // USER: process.env.DB_USER,
+    // PASSWORD: process.env.DB_PASS,
+    // DB: process.env.DB_NAME,
+    url: process.env.DATABASE_URL,
+    dialect: "postgres",
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false,
+        },
+    },
     pool: {
         max: 5,
         min: 0,
